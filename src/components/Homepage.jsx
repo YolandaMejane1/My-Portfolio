@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Typewriter } from "react-simple-typewriter";
 import { useInView } from "react-intersection-observer";
 import profilePicture from "../assets/profile picture.jpeg";
+import { FaDownload} from "react-icons/fa";
 
 function HomePage({ darkMode }) {
     const { ref: imgRef, inView: imgInView } = useInView({ threshold: 0.2 });
@@ -68,12 +69,24 @@ function HomePage({ darkMode }) {
             </p>
 
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0 mt-6">
-                <button className="px-6 py-2 bg-black text-white rounded-full hover:bg-black transition w-full sm:w-auto">
-                    Contact Me
-                </button>
-                <button className="px-6 py-2 border-2 border-black text-black bg-white rounded-full hover:bg-gray-100 transition w-full sm:w-auto">
-                    My Resume
-                </button>
+            <button
+              onClick={() => {
+                 document.getElementById('contact').scrollIntoView({behavior: 'smooth'
+                 });
+                  }}
+                 className="px-6 py-2 bg-black text-white rounded-full hover:bg-black transition w-full sm:w-auto">
+                   Contact Me
+                    </button>
+                    <button className="flex items-center px-6 py-2 border-2 border-black text-black bg-white rounded-full hover:bg-gray-100 transition w-full sm:w-auto">
+  <a
+    href="/Yolanda Sivuyile Mejane Resume (2).pdf" 
+    target="_blank" 
+    className="flex items-center w-full"
+  >
+    My Resume 
+     <FaDownload className="ml-2" /> 
+  </a>
+</button>
             </div>
         </div>
     );
