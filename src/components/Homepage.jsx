@@ -65,7 +65,7 @@ function HomePage({ darkMode }) {
                     textInView ? "animate-fadeUp" : "opacity-0"
                 }`}
             >
-                I specialize in creating modern, responsive, and user-friendly web applications. Passionate about coding, design, and bringing ideas to life with innovative solutions.
+                I specialize in creating modern, responsive, and user-friendly web applications. I am Passionate about coding, design, and bringing ideas to life with creativity.
             </p>
 
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0 mt-6">
