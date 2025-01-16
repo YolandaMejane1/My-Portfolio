@@ -51,7 +51,7 @@ function Contact({ darkMode }) {
               name="name" 
               type="text"
               placeholder="Enter your name"
-              className="p-2 border-b-2 border-gray-500 dark:border-gray-300 bg-transparent text-white dark:text-black focus:outline-none"
+              className="p-2 border-b-2 border-gray-500 dark:border-gray-300 bg-transparent focus:outline-none"
               required
             />
           </div>
@@ -63,7 +63,7 @@ function Contact({ darkMode }) {
               name="email" 
               type="email"
               placeholder="Enter your email"
-              className="p-2 border-b-2 border-gray-500 dark:border-gray-300 bg-transparent text-white dark:text-black focus:outline-none"
+              className="p-2 border-b-2 border-gray-500 dark:border-gray-300 bg-transparent focus:outline-none"
               required
             />
           </div>
@@ -75,7 +75,7 @@ function Contact({ darkMode }) {
               name="message" 
               placeholder="Write your message here"
               rows="4"
-              className="p-2 border-b-2 border-gray-500 dark:border-gray-300 bg-transparent text-white dark:text-black focus:outline-none"
+              className="p-2 border-b-2 border-gray-500 dark:border-gray-300 bg-transparent  focus:outline-none"
               required
             ></textarea>
           </div>
