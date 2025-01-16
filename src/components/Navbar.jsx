@@ -93,15 +93,13 @@ function Navbar({ toggleDarkMode, darkMode }) {
                             {darkMode ? <FaSun /> : <FaMoon />} 
                         </button>
                         <div className="flex space-x-4">
-                            <a href="https://www.linkedin.com/in/your-linkedin" target="_blank" rel="noopener noreferrer" className="text-2xl text-white">
+                            <a href="https://www.linkedin.com/in/yolanda-m-250997285/" target="_blank" rel="noopener noreferrer" className="text-2xl text-white">
                                 <FaLinkedin />
                             </a>
-                            <a href="https://github.com/your-github" target="_blank" rel="noopener noreferrer" className="text-2xl text-white">
+                            <a href="https://github.com/YolandaMejane1" target="_blank" rel="noopener noreferrer" className="text-2xl text-white">
                                 <FaGithub />
                             </a>
-                            <a href="https://www.instagram.com/your-instagram" target="_blank" rel="noopener noreferrer" className="text-2xl text-white">
-                                <FaInstagram />
-                            </a>
+                            
                         </div>
                     </div>
                 </div>
