@@ -17,7 +17,7 @@ function HomePage({ darkMode }) {
     return (
         <div
             id="homepage"
-            className={`flex flex-col items-center justify-center min-h-screen px-6 ${darkMode ? "bg-gray-900 text-gray-200" : "bg-gray-50 text-gray-800"} font-serif`}
+            className={`flex flex-col items-center justify-center min-h-screen px-6 ${darkMode ? "bg-black text-gray-200" : "bg-gray-50 text-gray-800"} font-serif`}
         >
             <div
                 ref={imgRef}
@@ -74,7 +74,7 @@ function HomePage({ darkMode }) {
                  document.getElementById('contact').scrollIntoView({behavior: 'smooth'
                  });
                   }}
-                 className="px-6 py-2 bg-black text-white rounded-full hover:bg-black transition w-full sm:w-auto">
+                 className="px-6 py-2 bg-black border border-white text-white rounded-full hover:bg-black transition w-full sm:w-auto">
                    Contact Me
                     </button>
                     <button className="flex items-center px-6 py-2 border-2 border-black text-black bg-white rounded-full hover:bg-gray-100 transition w-full sm:w-auto">

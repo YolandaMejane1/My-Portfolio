@@ -5,8 +5,8 @@ import weatherAppImage from "../assets/Weather App.png";
 import ticTacToeImage from "../assets/Tic Tac Toe.png";
 import ecommerceImage from "../assets/E-commerce Store.png";
 import dashboardImage from "../assets/E-commerce Dashboard.png";
-import diamondTechImage from "../assets/Diamond Tech.png";
-import easyTicketsImage from "../assets/Easy Tickets.png";
+import KodemorImage from "../assets/Kodemor.png";
+import FitnessTrackerImage from "../assets/FitnessTracker.png";
 
 function Projects({ darkMode }) {
     const { ref: projectsRef, inView: projectsInView } = useInView({ threshold: 0.2 });
@@ -16,8 +16,8 @@ function Projects({ darkMode }) {
         { title: "Tic Tac Toe", description: "A react tic tac toe game", image: ticTacToeImage, demoLink: "https://yolandamejane1.github.io/TicTacToeGame/", codeLink: "https://github.com/YolandaMejane1/TicTacToeGame" },
         { title: "E-commerce Store", description: "An E-commerce platform.", image: ecommerceImage, demoLink: "https://ecommerce-website-drab-rho.vercel.app/", codeLink: "https://github.com/YolandaMejane1/ecommerce-website" },
         { title: "Dashboard page", description: "E-commerce Dashboard page group project. Login: user@example.com and password123", image: dashboardImage, demoLink: "https://e-commerce-dashboard-s4rr.onrender.com/", codeLink: "https://github.com/UnathiPakade/E-Commerce-Dashboard" },
-        { title: "Diamond Tech", description: "Diamond Tech template webpage", image: diamondTechImage, demoLink: "https://yolandamejane1.github.io/Diamond-Tech-Project/", codeLink: "https://github.com/YolandaMejane1/Diamond-Tech-Project" },
-        { title: "Easy Tickets", description: "A ticket station group project", image: easyTicketsImage, demoLink: "https://yolandamejane1.github.io/ticket-station-group-project/", codeLink: "https://github.com/YolandaMejane1/ticket-station-group-project" }
+        { title: "Kodemor Blog website", description: "A blog website where users can post blogs", image: KodemorImage, demoLink: "https://blog-website-qiol-audq8ue15-yolandamejane1s-projects.vercel.app/", codeLink: "https://github.com/YolandaMejane1/Blog-Website" },
+        { title: "Fitness Tracker", description: "A Fitness app where users can login and update their workout stats", image: FitnessTrackerImage, demoLink: "https://fitness-tracker-app-1-6eco.onrender.com", codeLink: "https://github.com/YolandaMejane1/Fitness-Tracker-App" }
     ];
 
     return (

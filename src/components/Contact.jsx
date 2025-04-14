@@ -83,7 +83,7 @@ function Contact({ darkMode }) {
           <div className="flex justify-center sm:col-span-2">
             <button
               type="submit"
-              className="px-6 py-2 bg-black text-white rounded-full hover:bg-black transition w-full sm:w-auto"
+              className="px-6 py-2 border border-white bg-black text-white rounded-full hover:bg-black transition w-full sm:w-auto"
             >
               Send Message
             </button>

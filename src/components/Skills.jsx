@@ -12,7 +12,7 @@ function Skills({ darkMode }) {
   return (
     <div
       id="skills"
-      className={`p-8 ${darkMode ? "bg-black text-white" : "bg-white text-black"}`}
+      className={`p-8 ${darkMode ? "bg-black text-white " : "bg-white text-black"}`}
     >
       <h1 className="text-3xl font-bold mb-8 text-center">My Toolkit</h1>
       <div

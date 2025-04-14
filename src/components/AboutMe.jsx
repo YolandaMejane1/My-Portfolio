@@ -70,7 +70,7 @@ function AboutMe({ darkMode }) {
             className={`p-4 rounded-lg shadow-md text-center transform transition duration-700 ${
               textInView ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
             } ${
-              darkMode ? "bg-gray-800 text-gray-300" : "bg-white text-black"
+              darkMode ? "bg-black text-gray-300 border border-white" : "bg-white text-black"
             }`}
           >
             <FaCode className="text-3xl mb-2 mx-auto" />
@@ -81,23 +81,23 @@ function AboutMe({ darkMode }) {
             className={`p-4 rounded-lg shadow-md text-center transform transition duration-700 ${
               textInView ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
             } ${
-              darkMode ? "bg-gray-800 text-gray-300" : "bg-white text-black"
+              darkMode ? "bg-black text-gray-300 border border-white" : "bg-white text-black"
             }`}
           >
             <FaGraduationCap className="text-3xl mb-2 mx-auto" />
             <h3 className="text-xl font-semibold mb-2">Education</h3>
-            <p>Certificate in Software Development, AWS cloud certification</p>
+            <p>Bootcamp in Software Development, AWS cloud certification, IT degree in progress</p>
           </div>
           <div
             className={`p-4 rounded-lg shadow-md text-center transform transition duration-700 ${
               textInView ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
             } ${
-              darkMode ? "bg-gray-800 text-gray-300" : "bg-white text-black"
+              darkMode ? "bg-black text-gray-300 border border-white" : "bg-white text-black"
             }`}
           >
             <FaBriefcase className="text-3xl mb-2 mx-auto" />
             <h3 className="text-xl font-semibold mb-2">Projects</h3>
-            <p>Built more than 10 projects</p>
+            <p>Built more than 10 projects. Uses MERN stack and can implement JWT Authentication</p>
           </div>
         </div>
       </div>
