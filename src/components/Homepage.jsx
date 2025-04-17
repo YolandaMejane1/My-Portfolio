@@ -79,7 +79,7 @@ function HomePage({ darkMode }) {
                     </button>
                     <button className="flex items-center px-6 py-2 border-2 border-black text-black bg-white rounded-full hover:bg-gray-100 transition w-full sm:w-auto">
   <a
-    href="/Yolanda Sivuyile Mejane Resume (3).pdf" 
+    href="/Yolanda_Mejane_Resume.pdf" 
     target="_blank" 
     className="flex items-center w-full"
   >
