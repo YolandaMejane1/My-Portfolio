@@ -1,6 +1,6 @@
 import React from "react";
-import { FaGithub, FaGit, FaNode, FaAws, FaHtml5, FaCss3Alt, FaBootstrap, FaReact } from "react-icons/fa";
-import { SiGraphql, SiTailwindcss, SiMongodb, SiJavascript } from "react-icons/si";
+import { FaGithub, FaGit, FaNode, FaAws, FaHtml5, FaCss3Alt, FaBootstrap, FaReact, FaChartBar } from "react-icons/fa";
+import { SiTailwindcss, SiMongodb, SiJavascript } from "react-icons/si";
 import { useInView } from "react-intersection-observer";
 
 function Skills({ darkMode }) {
@@ -58,8 +58,8 @@ function Skills({ darkMode }) {
           <p className="text-sm">Bootstrap</p>
         </div>
         <div className="text-center skill-item p-3 rounded-full border-2 border-black">
-          <SiGraphql className="text-3xl mb-2 mx-auto" />
-          <p className="text-sm">GraphQL</p>
+          <FaChartBar className="text-3xl mb-2 mx-auto" />
+          <p className="text-sm">Chart.js</p>
         </div>
         <div className="text-center skill-item p-3 rounded-full border-2 border-black">
           <SiMongodb className="text-3xl mb-2 mx-auto" />
