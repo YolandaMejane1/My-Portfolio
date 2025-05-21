@@ -51,7 +51,7 @@ function Skills({ darkMode }) {
         </div>
         <div className="text-center skill-item p-3 rounded-full border-2 border-black">
           <FaAws className="text-3xl mb-2 mx-auto" />
-          <p className="text-sm">AWS In-Progress</p>
+          <p className="text-sm">AWS</p>
         </div>
         <div className="text-center skill-item p-3 rounded-full border-2 border-black">
           <FaBootstrap className="text-3xl mb-2 mx-auto" />

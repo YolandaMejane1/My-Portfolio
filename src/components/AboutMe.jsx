@@ -86,7 +86,7 @@ function AboutMe({ darkMode }) {
           >
             <FaGraduationCap className="text-3xl mb-2 mx-auto" />
             <h3 className="text-xl font-semibold mb-2">Education</h3>
-            <p>Bootcamp in Software Development, AWS cloud certification in progress, IT degree in progress</p>
+            <p>Bootcamp in Software Development, AWS cloud certification, IT degree in progress</p>
           </div>
           <div
             className={`p-4 rounded-lg shadow-md text-center transform transition duration-700 ${
