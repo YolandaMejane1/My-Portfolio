@@ -1,108 +1,85 @@
-import React from "react";
-import { useInView } from "react-intersection-observer";
-import emailjs from "emailjs-com";
+import React, { useRef, useState } from 'react';
+import emailjs from 'emailjs-com';
+import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import Section from './Section';
+import { profile } from '../data/content';
 
-function Contact({ darkMode }) {
-  const { ref: formRef, inView: formInView } = useInView({
-    triggerOnce: false,
-    threshold: 0.2,
-  });
+const EMAILJS = { service: 'service_rd2qs5r', template: 'template_kop0ssl', publicKey: '_nRNo9ahj9MMlt-dR' };
+
+const field =
+  'w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-slate-900 placeholder-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/30 dark:border-slate-700 dark:bg-slate-900 dark:text-white';
+const contactLink = 'inline-flex items-center gap-3 hover:text-indigo-600 dark:hover:text-indigo-400';
+
+export default function Contact() {
+  const formRef = useRef(null);
+  const [status, setStatus] = useState('idle'); // idle | sending | sent | error
 
   const sendEmail = (e) => {
-    e.preventDefault(); 
-
+    e.preventDefault();
+    setStatus('sending');
     emailjs
-      .sendForm(
-        "service_rd2qs5r", 
-        "template_kop0ssl", 
-        e.target, 
-        "_nRNo9ahj9MMlt-dR" 
-      )
-      .then(
-        (result) => {
-          console.log("Email sent successfully:", result.text);
-          alert("Message sent successfully!");
-        },
-        (error) => {
-          console.log("Failed to send email:", error.text);
-          alert("Failed to send the message. Please try again.");
-        }
-      );
-      e.target.reset();
+      .sendForm(EMAILJS.service, EMAILJS.template, formRef.current, EMAILJS.publicKey)
+      .then(() => {
+        setStatus('sent');
+        formRef.current.reset();
+      })
+      .catch(() => setStatus('error'));
   };
 
   return (
-    <div
-      id="contact"
-      className={`p-8 ${darkMode ? "bg-black text-white" : "bg-white text-black"} font-serif`}
-    >
-      <h1 className="text-3xl font-bold mb-8 text-center">Contact Me</h1>
-      <div
-        ref={formRef}
-        className={`max-w-3xl mx-auto p-6 space-y-6 ${
-          formInView ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
-        } transform transition duration-700 ease-out`}
-      >
-        <form onSubmit={sendEmail} className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <div className="flex flex-col">
-            <label htmlFor="name" className="mb-2">Your Name</label>
-            <input
-              id="name"
-              name="name" 
-              type="text"
-              placeholder="Enter your name"
-              className="p-2 border-b-2 border-gray-500 dark:border-gray-300 bg-transparent focus:outline-none"
-              required
-            />
-          </div>
+    <Section id="contact" eyebrow="Contact" title="Let's talk" className="bg-slate-50 dark:bg-slate-900/50">
+      <div className="grid gap-12 md:grid-cols-[1fr_1.2fr]">
+        <div>
+          <p className="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+            I&apos;m always happy to talk about roles, projects or ideas. Send a message and I&apos;ll get back to you.
+          </p>
+          <ul className="mt-6 space-y-3 text-slate-700 dark:text-slate-200">
+            <li>
+              <a href={`mailto:${profile.email}`} className={contactLink}>
+                <FaEnvelope /> {profile.email}
+              </a>
+            </li>
+            <li>
+              <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className={contactLink}>
+                <FaLinkedin /> LinkedIn
+              </a>
+            </li>
+            <li>
+              <a href={profile.github} target="_blank" rel="noopener noreferrer" className={contactLink}>
+                <FaGithub /> GitHub
+              </a>
+            </li>
+          </ul>
+        </div>
 
-          <div className="flex flex-col">
-            <label htmlFor="email" className="mb-2">Your Email</label>
-            <input
-              id="email"
-              name="email" 
-              type="email"
-              placeholder="Enter your email"
-              className="p-2 border-b-2 border-gray-500 dark:border-gray-300 bg-transparent focus:outline-none"
-              required
-            />
+        <form ref={formRef} onSubmit={sendEmail} className="grid gap-5 sm:grid-cols-2">
+          <div>
+            <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-200">Your name</label>
+            <input id="name" name="name" type="text" placeholder="Jane Smith" required className={field} />
           </div>
-
-          <div className="flex flex-col sm:col-span-2">
-            <label htmlFor="message" className="mb-2">Your Message</label>
-            <textarea
-              id="message"
-              name="message" 
-              placeholder="Write your message here"
-              rows="4"
-              className="p-2 border-b-2 border-gray-500 dark:border-gray-300 bg-transparent  focus:outline-none"
-              required
-            ></textarea>
+          <div>
+            <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-200">Your email</label>
+            <input id="email" name="email" type="email" placeholder="jane@company.com" required className={field} />
           </div>
-
-          <div className="flex justify-center sm:col-span-2">
+          <div className="sm:col-span-2">
+            <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-200">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="How can I help?" required className={field} />
+          </div>
+          <div className="sm:col-span-2">
             <button
               type="submit"
-              className="px-6 py-2 border border-white bg-black text-white rounded-full hover:bg-black transition w-full sm:w-auto"
+              disabled={status === 'sending'}
+              className="w-full rounded-full bg-indigo-600 px-6 py-3 font-semibold text-white shadow-lg shadow-indigo-600/20 transition hover:bg-indigo-700 disabled:opacity-60 sm:w-auto"
             >
-              Send Message
+              {status === 'sending' ? 'Sending...' : 'Send message'}
             </button>
+            <p role="status" aria-live="polite" className="mt-3 text-sm">
+              {status === 'sent' && <span className="text-green-600 dark:text-green-400">Thanks! Your message was sent.</span>}
+              {status === 'error' && <span className="text-red-600 dark:text-red-400">Sorry, that didn&apos;t send. Please try again or email me directly.</span>}
+            </p>
           </div>
         </form>
       </div>
-      <style jsx>{`
-        input,
-        textarea {
-          transition: border-color 0.3s ease;
-        }
-
-        input:focus,
-        textarea:focus {
-          border-color: ${darkMode ? "#fff" : "#000"};
-        }
-      `}</style>
-    </div>
+    </Section>
   );
 }
-
-export default Contact;

@@ -1,52 +1,71 @@
-import React from "react";
-import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
-import { useInView } from "react-intersection-observer";
-import weatherAppImage from "../assets/Weather App.png";
-import ticTacToeImage from "../assets/Tic Tac Toe.png";
-import ecommerceImage from "../assets/E-commerce Store.png";
-import dashboardImage from "../assets/E-commerce Dashboard.png";
-import KodemorImage from "../assets/Kodemor.png";
-import FitnessTrackerImage from "../assets/FitnessTracker.png";
+import React from 'react';
+import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
+import Section from './Section';
+import { projects } from '../data/content';
 
-function Projects({ darkMode }) {
-    const { ref: projectsRef, inView: projectsInView } = useInView({ threshold: 0.2 });
+const chip =
+  'rounded-full bg-indigo-50 px-3 py-1 text-xs font-medium text-indigo-700 dark:bg-indigo-400/10 dark:text-indigo-300';
+const primaryBtn =
+  'inline-flex items-center gap-2 rounded-full bg-indigo-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-indigo-700';
+const ghostBtn =
+  'inline-flex items-center gap-2 rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-800 transition hover:border-indigo-500 hover:text-indigo-600 dark:border-slate-700 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-400';
 
-    const projects = [
-        { title: "My Weather App", description: "A modern weather app.", image: weatherAppImage, demoLink: "https://yolandamejane1.github.io/My-Weather-App/", codeLink: "https://github.com/YolandaMejane1/My-Weather-App" },
-        { title: "Tic Tac Toe", description: "A react tic tac toe game", image: ticTacToeImage, demoLink: "https://yolandamejane1.github.io/TicTacToeGame/", codeLink: "https://github.com/YolandaMejane1/TicTacToeGame" },
-        { title: "E-commerce Store", description: "An E-commerce platform.", image: ecommerceImage, demoLink: "https://ecommerce-website-drab-rho.vercel.app/", codeLink: "https://github.com/YolandaMejane1/ecommerce-website" },
-        { title: "Dashboard page", description: "E-commerce Dashboard page group project. Login: user@example.com and password123", image: dashboardImage, demoLink: "https://e-commerce-dashboard-s4rr.onrender.com/", codeLink: "https://github.com/UnathiPakade/E-Commerce-Dashboard" },
-        { title: "Kodemor Blog website", description: "A blog website where users can post blogs", image: KodemorImage, demoLink: "https://blog-website-qiol-audq8ue15-yolandamejane1s-projects.vercel.app/", codeLink: "https://github.com/YolandaMejane1/Blog-Website" },
-        { title: "Fitness Tracker", description: "A Fitness app where users can login and update their workout stats", image: FitnessTrackerImage, demoLink: "https://fitness-tracker-app-1-6eco.onrender.com", codeLink: "https://github.com/YolandaMejane1/Fitness-Tracker-App" }
-    ];
-
-    return (
-        <div id="projects" className={`p-8 ${darkMode ? "bg-black text-white" : "bg-white text-black"} font-serif`}>
-            <h1 className="text-3xl font-bold text-center mb-8">Projects</h1>
-            <div
-                ref={projectsRef}
-                className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ${projectsInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} transition-transform duration-700 ease-out`}
-            >
-                {projects.map((project, index) => (
-                    <div key={index} className="flex flex-col items-center space-y-3">
-                        <div className="relative w-54 h-48 rounded-lg overflow-hidden shadow-lg border-1 border-black">
-                            <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
-                            <div className="absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center space-x-4 opacity-0 hover:opacity-100 transition-opacity">
-                                <a href={project.demoLink} target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-white text-black flex justify-center items-center rounded-full shadow-md hover:bg-gray-200">
-                                    <FaExternalLinkAlt />
-                                </a>
-                                <a href={project.codeLink} target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-white text-black flex justify-center items-center rounded-full shadow-md hover:bg-gray-200">
-                                    <FaGithub />
-                                </a>
-                            </div>
-                        </div>
-                        <h2 className="text-base font-semibold text-center">{project.title}</h2>
-                        <p className="text-sm text-center max-w-xs">{project.description}</p>
-                    </div>
-                ))}
-            </div>
-        </div>
-    );
+function Links({ project }) {
+  return (
+    <div className="mt-5 flex flex-wrap gap-3">
+      <a href={project.live} target="_blank" rel="noopener noreferrer" className={primaryBtn}>
+        Live demo <FaExternalLinkAlt className="text-xs" />
+      </a>
+      <a href={project.code} target="_blank" rel="noopener noreferrer" className={ghostBtn}>
+        <FaGithub /> Code
+      </a>
+    </div>
+  );
 }
 
-export default Projects;
+function Tags({ tags }) {
+  return (
+    <div className="mt-4 flex flex-wrap gap-2">
+      {tags.map((t) => (
+        <span key={t} className={chip}>{t}</span>
+      ))}
+    </div>
+  );
+}
+
+export default function ProjectsPage() {
+  const featured = projects.find((p) => p.featured);
+  const rest = projects.filter((p) => !p.featured);
+
+  return (
+    <Section id="projects" eyebrow="Projects" title="Things I've built">
+      {featured && (
+        <article className="grid overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 md:grid-cols-2">
+          <img src={featured.image} alt={`${featured.title} preview`} className="h-full max-h-80 w-full object-cover md:max-h-none" loading="lazy" />
+          <div className="p-6 sm:p-8">
+            <p className="text-xs font-semibold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">Featured project</p>
+            <h3 className="mt-2 text-2xl font-bold text-slate-900 dark:text-white">{featured.title}</h3>
+            <p className="mt-3 leading-relaxed text-slate-600 dark:text-slate-300">{featured.description}</p>
+            <Tags tags={featured.tags} />
+            <Links project={featured} />
+          </div>
+        </article>
+      )}
+
+      <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {rest.map((p) => (
+          <article key={p.title} className="flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900">
+            <img src={p.image} alt={`${p.title} preview`} className="aspect-[16/10] w-full object-cover object-top" loading="lazy" />
+            <div className="flex flex-1 flex-col p-5">
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white">{p.title}</h3>
+              <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{p.description}</p>
+              {p.note && <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">{p.note}</p>}
+              <Tags tags={p.tags} />
+              <Links project={p} />
+            </div>
+          </article>
+        ))}
+      </div>
+    </Section>
+  );
+}
